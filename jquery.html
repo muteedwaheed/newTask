@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        #f1 {
+            text-align: center;
+        }
+
+        #f2 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #f3 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #f4 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .button {
+            display: block;
+            /* width: 100%; */
+            padding: 10px;
+            text-align: center;
+            border-radius: 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1 id="f1">Jquery:</h1>
+    <p id="f2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo vel error in<br>
+        illo doloribus ipsum eum illum iusto culpa, est adipisci, accusamus qui omnis <br>
+        necessitatibus at! Ducimus enim voluptatum cumque!</p>
+    <h1 id="f1">double click():</h1>
+    <p id="f3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo vel error in<br>
+        illo doloribus ipsum eum illum iusto culpa, est adipisci, accusamus qui omnis <br>
+        necessitatibus at! Ducimus enim voluptatum cumque!</p>
+    <h1 id="f1">Mouse enter():</h1>
+    <a href="#" class="button">Start</a>
+    <h1 id="f1">Mouse leave():</h1>
+    <p id="f4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo vel error in<br>
+        illo doloribus ipsum eum illum iusto culpa, est adipisci, accusamus qui omnis <br>
+        necessitatibus at! Ducimus enim voluptatum cumque!</p><br><br>
+    <h1 id="f1">form events():</h1>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" placeholder="Enter email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox"> Remember me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="b1">Submit</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col"> <input type="text" placeholder="Enter" class="inputField"><br>
+                <button class="btn">click here!</button>
+            </div>
+            <div class="col">
+                <ul id="myUL">
+                    <li>Hit the gym</li>
+                    <li>Pay bills</li>
+                    <li>Meet George</li>
+                    <li>Buy eggs</li>
+                    <li>Read a book</li>
+                    <li>Organize office</li>
+                </ul>
+            </div>
+        </div> -->
+        <div class="container mt-5" id="b"></div>
+        <div class="container mt-5">
+            <h1>Timer: <span id="timerDisplay">00:00:00</span></h1>
+            <button type="button" class="btn btn-primary" id="startButton">Start Timer</button>
+          </div>
+
+    <script>
+        $(document).ready(function(){
+            let ary = ["apple","mango","orange","banana","peach","melon","watermelon","stowbery","gava","tamato"];
+            $.each(ary, function(index, value){
+$('#b').append(`<button type="button" class="btn btn-outline-danger w-25  m-2">${value}</button>`);
+            });
+
+        });
+        $(document).ready(function() {
+      var interval; // Variable to store the interval ID
+      var seconds = 0; // Initial value for seconds
+
+      // Function to update the timer display
+      function updateTimerDisplay() {
+        var hours = Math.floor(seconds / 3600);
+        var minutes = Math.floor((seconds % 3600) / 60);
+        var remainingSeconds = seconds % 60;
+
+        // Format the time as HH:MM:SS
+        var timeString = (hours < 10 ? "0" : "") + hours + ":" +
+                         (minutes < 10 ? "0" : "") + minutes + ":" +
+                         (remainingSeconds < 10 ? "0" : "") + remainingSeconds;
+
+        $("#timerDisplay").text(timeString);
+        seconds++; // Increase the seconds for the next iteration
+      }
+      // Event handler for the Start button
+      $("#startButton").click(function() {
+        // Start the timer by calling the updateTimerDisplay function every 1000ms (1 second)
+        interval = setInterval(updateTimerDisplay, 1000);
+
+        // Create buttons when the timer starts
+        createButtons();
+      });
+    });
+       
+    //         $(document).ready(function() {
+    //   // Define an array with different values
+    //   var valuesArray = [10, 20, 30, 40, 50];
+
+    //   // Loop through the array and create boxes with values
+    //   for (var i = 0; i < valuesArray.length; i++) {
+    //     var boxValue = valuesArray[i];
+    //     var box = $("<div>").addClass("box").text(boxValue);
+    //     $("#boxContainer").append(box);
+    //   }
+    // });
+        // $(document).ready(function () {
+        //     $(".btn").click(function () {
+        //         let store = $(".inputField").val();
+        //         $("#myUL").append(`<li>${store}</li>`);
+        //     });
+        // });
+        // $(document).ready(function () {
+        //     $("#f2").click(function () {
+        //         $(this).hide();
+        //     });
+        // });
+        // // mouse events: dblclick()
+        // $(document).ready(function () {
+        //     $('#f3').dblclick(function () {
+        //         $(this).css('color', 'blue');
+        //     });
+        // });
+        // // mouse enter event
+        // $(document).ready(function () {
+        //     $(".button").mouseenter(function () {
+        //         alert("mouse enter event is work");
+        //     });
+        // });
+        // // mouse leave():
+        // $(document).ready(function () {
+        //     $("#f4").mouseenter(function () {
+        //         $(this).css("color", "green");
+        //     });
+        //     $("#f4").mouseleave(function () {
+        //         $(this).css("color", "grey");
+        //     });
+        // });
+        // // form function()
+        // $(document).ready(function () {
+        //     $("form").submit(function () {
+        //         alert("Submitted");
+        //     });
+        // });
+        // // focus and blur event()s
+        // $(document).ready(function () {
+        //     $("#email").focus(function () {
+        //         $(this).css("background-color", "pink");
+        //     });
+        //     $("#email").blur(function () {
+        //         $(this).css("background-color", "grey");
+        //     });
+        // });
+        // $(document).ready(function () {
+        //     $("#pwd").hover(function () {
+        //         alert("enter the password!");
+        //     });
+        // });
+    </script>
+</body>
+
+</html>
